@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.peixoto.gestao_vagas.exceptions.UserFoundException;
 import com.peixoto.gestao_vagas.modules.candidate.CandidateEntity;
 import com.peixoto.gestao_vagas.modules.candidate.useCases.CreateCandidateUseCase;
 
