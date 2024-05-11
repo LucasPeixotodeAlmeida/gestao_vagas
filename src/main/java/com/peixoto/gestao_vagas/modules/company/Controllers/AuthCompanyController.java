@@ -13,13 +13,13 @@ import com.peixoto.gestao_vagas.modules.company.dto.AuthCompanyDTO;
 import com.peixoto.gestao_vagas.modules.company.services.AuthCompanyUseCase;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/company")
 public class AuthCompanyController {
 
     @Autowired
     private AuthCompanyUseCase authCompanyUseCase;
 
-    @PostMapping("/company")
+    @PostMapping("/auth")
     public ResponseEntity<Object> create(@RequestBody AuthCompanyDTO authCompanyDTO){
         try{
             var result = this.authCompanyUseCase.execute(authCompanyDTO);
