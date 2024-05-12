@@ -19,7 +19,7 @@ public class ApplyJobCandidateUseCase {
     @Autowired
     private JobRepository jobRepository;
     
-    private void execute(UUID idCandidate, UUID idJob){
+    public void execute(UUID idCandidate, UUID idJob){
         this.candidateRepository.findById(idCandidate).orElseThrow(() -> {
             throw new UserNotFoundException();
         });
