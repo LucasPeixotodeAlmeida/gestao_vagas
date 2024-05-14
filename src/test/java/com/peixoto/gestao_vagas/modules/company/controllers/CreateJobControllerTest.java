@@ -1,5 +1,9 @@
 package com.peixoto.gestao_vagas.modules.company.controllers;
 
+import static org.junit.Assert.assertTrue;
+
+import java.util.UUID;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +20,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.peixoto.gestao_vagas.exceptions.CompanyNotFoundException;
 import com.peixoto.gestao_vagas.modules.company.dto.CreateJobDTO;
 import com.peixoto.gestao_vagas.modules.company.entities.CompanyEntity;
 import com.peixoto.gestao_vagas.modules.company.repositories.CompanyRepository;
@@ -67,6 +72,22 @@ public class CreateJobControllerTest {
             .andExpect(MockMvcResultMatchers.status().isOk());
 
         System.out.println(result);
+    }
+
+    @Test
+    public void should_be_able_to_create_a_new_job_if_company_not_found() throws Exception{
+
+        var createdJobDTO = CreateJobDTO.builder()
+        .benefits("BENEFITS_TEST")
+        .description("DESCRIPTION_TEST")
+        .level("LEVEL_TEST")
+        .build();
+
+        mvc.perform(MockMvcRequestBuilders.post("/company/job/")
+        .contentType(MediaType.APPLICATION_JSON)
+        .content(TestUtils.objectToJson(createdJobDTO))
+        .header("Authorization", TestUtils.GenerateToken(UUID.randomUUID(), "JAVAGAS_@123#")))
+        .andExpect(MockMvcResultMatchers.status().isBadRequest());
     }
 
     
