@@ -1,7 +1,6 @@
 package com.peixoto.gestao_vagas.security;
 
 import java.io.IOException;
-import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,7 +16,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
-public class SecurityFilter extends OncePerRequestFilter {
+public class SecurityCompanyFilter extends OncePerRequestFilter {
 
   @Autowired
   private JWTProvider jwtProvider;
@@ -25,7 +24,6 @@ public class SecurityFilter extends OncePerRequestFilter {
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
-    //SecurityContextHolder.getContext().setAuthentication(null);
     String header = request.getHeader("Authorization");
 
     if(request.getRequestURI().startsWith("/company")){

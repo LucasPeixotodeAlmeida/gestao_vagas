@@ -1,7 +1,5 @@
 package com.peixoto.gestao_vagas.modules.company.controllers;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.UUID;
 
 import org.junit.Before;
@@ -20,7 +18,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.peixoto.gestao_vagas.exceptions.CompanyNotFoundException;
 import com.peixoto.gestao_vagas.modules.company.dto.CreateJobDTO;
 import com.peixoto.gestao_vagas.modules.company.entities.CompanyEntity;
 import com.peixoto.gestao_vagas.modules.company.repositories.CompanyRepository;
